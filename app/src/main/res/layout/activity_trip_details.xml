@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.manishchawley.computehelper.render.TripDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/activity_trip_details_appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/activity_trip_details_collapsingtoolbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="60dp"
+            app:expandedTitleMarginStart="40dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/activity_trip_details_tripimage_imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/activity_trip_details_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|left"
+                    android:text="@string/trip_default_destination"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/activity_trip_details_startdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_trip_details_destination"
+                    android:text="@string/trip_default_startdate" />
+
+                <!--
+                <fragment
+                    android:id="@+id/activity_trip_details_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment" />
+                    -->
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/activity_trip_details_nestedscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--
+             <fragment
+                android:id="@+id/activity_trip_details_origin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
+            -->
+
+            <TextView
+                android:id="@+id/activity_trip_details_origin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/trip_default_start"
+                android:textSize="20dp"
+                android:paddingTop="5dp"/>
+
+            <TextView
+                android:id="@+id/activity_trip_details_enddate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_trip_details_origin" />
+
+        </RelativeLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <!--
+    <NumberPicker
+        android:id="@+id/activity_trip_details_maxnoofpeople"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_trip_details_enddate"/>
+
+        -->
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_trip_details_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_dialog_info"
+        app:fabSize="normal"
+        app:layout_anchor="@id/activity_trip_details_collapsingtoolbarlayout"
+        app:layout_anchorGravity="bottom|end|right"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_trip_details_commuters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_recent_history"
+        app:fabSize="normal"
+        app:layout_anchor="@id/activity_trip_details_chat"
+        app:layout_anchorGravity="center"
+        android:layout_marginRight="60dp"/>
+
+    <Button
+        android:id="@+id/activity_trip_details_update"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/button_update"
+        android:background="@color/button_update"
+        app:layout_anchor="@id/activity_trip_details_nestedscrollview"
+        app:layout_anchorGravity="bottom|center"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:id="@+id/activity_trip_details_cancel"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/button_cancel"
+        android:background="@color/button_cancel"
+        app:layout_anchor="@id/activity_trip_details_nestedscrollview"
+        app:layout_anchorGravity="bottom|center"
+        android:layout_marginRight="200dp"
+        android:layout_marginBottom="5dp"/>
+
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

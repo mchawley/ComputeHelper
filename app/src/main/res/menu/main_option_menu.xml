@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_option_menu_user_settings"
+        android:title="@string/main_option_menu_settings"
+        android:icon="@drawable/com_facebook_profile_picture_blank_portrait" />
+
+    <item
+        android:id="@+id/main_option_menu_trips"
+        android:title="@string/main_option_menu_trips" />
+
+    <item
+        android:id="@+id/main_option_menu_invites"
+        android:title="@string/main_option_menu_invites" />
+
+    <item
+        android:id="@+id/main_option_menu_chats"
+        android:title="@string/main_option_menu_chats" />
+
+    <item
+        android:id="@+id/main_option_menu_logout"
+        android:title="@string/main_option_menu_logout" />
+
+
+</menu>

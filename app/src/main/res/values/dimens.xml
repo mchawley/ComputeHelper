@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fragment_user_details_image_height">50dp</dimen>
+    <dimen name="fragment_user_details_image_width">50dp</dimen>
+    <dimen name="scroll_list_dispaly_image_height">50dp</dimen>
+    <dimen name="scroll_list_dispaly_image_width">50dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="trip_card_margin">5dp</dimen>
+    <dimen name="trip_card_elevation">3dp</dimen>
+    <dimen name="trip_card_height">250dp</dimen>
+</resources>

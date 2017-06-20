@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Compute Helper</string>
+    <string name="facebook_app_id">1953005964978812</string>
+    <string name="android_api_key">AIzaSyBr-TuTI9J6MtuhlxJ27ULL_WgDMfB_Dxs</string>
+
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="destination_picker">Please select destination</string>
+
+    <string name="list_display_destination">Going to </string>
+
+    <string name="userlistfragment_retriving_message">Retrieving Commuters List</string>
+
+    <string name="title_activity_settings">Title Activity Settings</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_update">Update</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="main_option_menu_trips">My Trips</string>
+    <string name="main_option_menu_invites">Invites</string>
+    <string name="main_option_menu_chats">Chats</string>
+    <string name="main_option_menu_logout">Logout</string>
+    <string name="button_login">Login to continue</string>
+    <string name="trip_default_destination">Destination</string>
+    <string name="trip_default_startdate">Today</string>
+    <string name="trip_default_start">Starting</string>
+    <string name="main_option_menu_settings">User Name</string>
+    <string name="commuter_name_age">Name, Age</string>
+    <string name="commuter_list_explore">Explore</string>
+    <string name="commuter_list_invite">Invites</string>
+    <string name="commuter_list_match">Matches</string>
+
+
+</resources>
