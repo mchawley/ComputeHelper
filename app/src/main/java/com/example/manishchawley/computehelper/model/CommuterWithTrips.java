@@ -3,6 +3,11 @@ package com.example.manishchawley.computehelper.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.manishchawley.computehelper.util.Constants;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +57,22 @@ public class CommuterWithTrips extends Commuter implements Parcelable {
 
     public void setTripList(ArrayList<Trip> tripList) {
         this.tripList = tripList;
+    }
+
+    public void setCommuterWithTrips(ValueEventListener listener) throws Commuter.NullCommuterIdException {
+        if(this.getCommuterId()==null) throw new Commuter.NullCommuterIdException();
+
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference(Constants.COMMUTER_WITH_TRIP_DATABASE_KEY);
+        database.child(this.getCommuterId()).setValue(this);
+        database.child(this.getCommuterId()).addValueEventListener(listener);
+
+    }
+
+    public class NullCommuterIdException extends Throwable {
+        @Override
+        public String getMessage() {
+            return "Commuter ID cannot be Null";
+        }
     }
 
 }

@@ -26,9 +26,9 @@ public class Defaults {
 
 
         //trip.setTripId("304");
-        trip.setDestinationLocation(getDefaultLocation());
+        trip.setDestinationLocation(mLatLng.convert(getDefaultLocation()));
         trip.setDestinationPlace("Destination Place");
-        trip.setOriginLocation(getDefaultLocation());
+        trip.setOriginLocation(mLatLng.convert(getDefaultLocation()));
         trip.setOriginPlace("Start Place");
         trip.setModeOfTravel(1);
         trip.setTripStart(Calendar.getInstance().getTimeInMillis());

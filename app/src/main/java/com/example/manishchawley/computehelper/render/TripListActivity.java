@@ -15,15 +15,25 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.manishchawley.computehelper.R;
 import com.example.manishchawley.computehelper.app.AppController;
 import com.example.manishchawley.computehelper.component.OptionActivity;
-import com.example.manishchawley.computehelper.component.TripCardAdapter;
+import com.example.manishchawley.computehelper.component.TripRecyclerAdapter;
+import com.example.manishchawley.computehelper.model.Commuter;
+import com.example.manishchawley.computehelper.model.CommuterWithTrips;
 import com.example.manishchawley.computehelper.model.Trip;
+import com.example.manishchawley.computehelper.model.User;
+import com.example.manishchawley.computehelper.provider.TripDataProvider;
 import com.example.manishchawley.computehelper.util.Constants;
 import com.example.manishchawley.computehelper.util.JSONUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -35,8 +45,8 @@ public class TripListActivity extends OptionActivity{
     private List<Trip> tripList = new ArrayList<Trip>();
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    private TripCardAdapter tripCardAdapter;
-
+    private TripRecyclerAdapter tripCardAdapter;
+    private String commuterID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +76,30 @@ public class TripListActivity extends OptionActivity{
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        tripCardAdapter = new TripCardAdapter(this, tripList);
+        tripCardAdapter = new TripRecyclerAdapter(this, tripList);
         recyclerView.setAdapter(tripCardAdapter);
 
-        AppController.getInstance().addToRequestQueue(getJSONRequest());
+//        AppController.getInstance().addToRequestQueue(getJSONRequest());
+
+        if(getIntent().hasExtra(Constants.COMMUTER_ID_KEY))
+            commuterID = getIntent().getStringExtra(Constants.COMMUTER_ID_KEY);
+        else
+            commuterID = User.getUser().getUserID();
+
+        getTripsForCommuter();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(savedInstanceState.containsKey(Constants.COMMUTER_ID_KEY))
+            commuterID = savedInstanceState.getString(Constants.COMMUTER_ID_KEY);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Constants.COMMUTER_ID_KEY, commuterID);
     }
 
     private void startNewTripActivity() {
@@ -79,38 +109,61 @@ public class TripListActivity extends OptionActivity{
         startActivity(intent);
     }
 
-    public JsonArrayRequest getJSONRequest() {
-        JsonArrayRequest request = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        //Log.e(TAG, response.toString());
-                        Log.i(TAG, "Response received: " + response.length());
-                        hidePDialog();
-                        try {
-                            for (int i=0; i<response.length();i++)
-                                tripList.add(JSONUtils.getTripFromJson(response.getJSONObject(i)));
 
-                            //tripList = JSONUtils.getTripsFromJson(response, JSONUtils.USE_DEFAULT);
-                            //Log.e(TAG, "Trip List size: " + tripList.size());
-                            //Log.e(TAG, "getTripsFromJson size: " + JSONUtils.getTripsFromJson(response, JSONUtils.USE_DEFAULT).size());
-                        } catch (JSONException e) {
-                            Log.e(TAG, e.getMessage());
-                            e.printStackTrace();
-                        }
-                        tripCardAdapter.notifyDataSetChanged();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e(TAG, error.getMessage());
-                        hidePDialog();
-                    }
-                });
+    private void getTripsForCommuter() {
+        try {
+            TripDataProvider.getTripsOfCommuter(commuterID, new TripDataProvider.TripDataListener() {
+                @Override
+                public void onSuccess(ArrayList<Trip> trips) {
+                    tripList.clear();
+                    tripList.addAll(trips);
+                    tripCardAdapter.notifyDataSetChanged();
+                    hidePDialog();
+                }
 
-        return request;
+                @Override
+                public void onError(DatabaseError databaseError) {
+                    Log.e(TAG, databaseError.getMessage());
+                }
+            });
+        } catch (TripDataProvider.NullCommuterIdException e) {
+            Log.e(TAG, e.getMessage());
+            e.printStackTrace();
+        }
     }
+
+//    public JsonArrayRequest getJSONRequest() {
+//        JsonArrayRequest request = new JsonArrayRequest(url,
+//                new Response.Listener<JSONArray>() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        //Log.e(TAG, response.toString());
+//                        Log.i(TAG, "Response received: " + response.length());
+//                        hidePDialog();
+//                        try {
+//                            for (int i=0; i<response.length();i++)
+//                                tripList.add(JSONUtils.getTripFromJson(response.getJSONObject(i)));
+//
+//                            //tripList = JSONUtils.getTripsFromJson(response, JSONUtils.USE_DEFAULT);
+//                            //Log.e(TAG, "Trip List size: " + tripList.size());
+//                            //Log.e(TAG, "getTripsFromJson size: " + JSONUtils.getTripsFromJson(response, JSONUtils.USE_DEFAULT).size());
+//                        } catch (JSONException e) {
+//                            Log.e(TAG, e.getMessage());
+//                            e.printStackTrace();
+//                        }
+//                        tripCardAdapter.notifyDataSetChanged();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Log.e(TAG, error.getMessage());
+//                        hidePDialog();
+//                    }
+//                });
+//
+//        return request;
+//    }
 
     private void hidePDialog() {
         if(pDialog!=null) {

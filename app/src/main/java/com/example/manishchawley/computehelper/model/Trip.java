@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import com.example.manishchawley.computehelper.util.Constants;
-import com.google.android.gms.maps.model.LatLng;
+import com.example.manishchawley.computehelper.util.mLatLng;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -32,8 +32,8 @@ public class Trip implements Parcelable{
     public static final String TRIP_STATUS_KEY              = "TRIP_STATUS";
     public static final String TRIP_TYPE_KEY                = "TRIP_TYPE";
 
-    private LatLng originLocation;             //starting location of the trip
-    private LatLng destinationLocation;       //destination location of the trip
+    private mLatLng originLocation;             //starting location of the trip
+    private mLatLng destinationLocation;       //destination location of the trip
     private String destinationPlace;             //destination place
     private String originPlace;                   //starting place
     private String destinationPlaceID;
@@ -53,7 +53,7 @@ public class Trip implements Parcelable{
     public Trip() {
     }
 
-    public Trip(LatLng originLocation, LatLng destinationLocation, String destinationPlace, String originPlace, String destinationPlaceID, String originPlaceID, int modeOfTravel, String tripId, long tripStart, long tripEnd, Commuter tripOwner, ArrayList<Commuter> tripCommutersId, int maxCommuterAllowed, int tripStatus, int typeOfTrip, String tripDescription, String imageURL) {
+    public Trip(mLatLng originLocation, mLatLng destinationLocation, String destinationPlace, String originPlace, String destinationPlaceID, String originPlaceID, int modeOfTravel, String tripId, long tripStart, long tripEnd, Commuter tripOwner, ArrayList<Commuter> tripCommutersId, int maxCommuterAllowed, int tripStatus, int typeOfTrip, String tripDescription, String imageURL) {
         this.originLocation = originLocation;
         this.destinationLocation = destinationLocation;
         this.destinationPlace = destinationPlace;
@@ -74,8 +74,8 @@ public class Trip implements Parcelable{
     }
 
     protected Trip(Parcel in) {
-        originLocation = in.readParcelable(LatLng.class.getClassLoader());
-        destinationLocation = in.readParcelable(LatLng.class.getClassLoader());
+        originLocation = in.readParcelable(mLatLng.class.getClassLoader());
+        destinationLocation = in.readParcelable(mLatLng.class.getClassLoader());
         destinationPlace = in.readString();
         originPlace = in.readString();
         destinationPlaceID = in.readString();
@@ -105,19 +105,19 @@ public class Trip implements Parcelable{
         }
     };
 
-    public LatLng getOriginLocation() {
+    public mLatLng getOriginLocation() {
         return originLocation;
     }
 
-    public void setOriginLocation(LatLng originLocation) {
+    public void setOriginLocation(mLatLng originLocation) {
         this.originLocation = originLocation;
     }
 
-    public LatLng getDestinationLocation() {
+    public mLatLng getDestinationLocation() {
         return destinationLocation;
     }
 
-    public void setDestinationLocation(LatLng destinationLocation) {
+    public void setDestinationLocation(mLatLng destinationLocation) {
         this.destinationLocation = destinationLocation;
     }
 
@@ -291,6 +291,8 @@ public class Trip implements Parcelable{
     }
 
     public int getNoOfCommuters() {
+        if(tripCommuters==null)
+            return 0;
         return tripCommuters.size();
     }
 }

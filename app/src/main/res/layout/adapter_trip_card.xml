@@ -12,58 +12,59 @@
         android:elevation="@dimen/trip_card_elevation"
         card_view:cardCornerRadius="1dp">
 
-            <ImageView
-                android:id="@+id/adapter_trip_card_tripimage"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/trip_card_height"
-                android:background="@color/button_update"
-                android:adjustViewBounds="true"
-                />
+        <ImageView
+            android:id="@+id/adapter_trip_card_tripimage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/trip_card_height"
+            android:adjustViewBounds="true"
+            />
 
-            <TextView
-                android:id="@+id/adapter_trip_card_start"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="@string/trip_default_start"
-                android:layout_gravity="bottom|left"
-                android:textDirection="ltr"
-                android:textStyle="bold"
-                android:textSize="20dp" />
+        <TextView
+            android:id="@+id/adapter_trip_card_start"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/trip_default_start"
+            android:layout_gravity="bottom|left"
+            android:textDirection="ltr"
+            android:textStyle="bold"
+            android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/adapter_trip_card_destination"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="@string/trip_default_destination"
-                android:layout_gravity="top|left"
-                android:textStyle="bold"
-                android:textSize="25dp" />
+        <TextView
+            android:id="@+id/adapter_trip_card_destination"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/trip_default_destination"
+            android:layout_gravity="top|left"
+            android:textColorHighlight="@color/button_login"
+            android:textColor="@color/button_login"
+            android:textStyle="bold"
+            android:textSize="25dp" />
 
-            <TextView
-                android:id="@+id/adapter_trip_card_startdate"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="@string/trip_default_startdate"
-                android:layout_gravity="top|left"
-                android:layout_marginTop="40dp"
-                android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/adapter_trip_card_startdate"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="@string/trip_default_startdate"
+            android:layout_gravity="top|left"
+            android:layout_marginTop="40dp"
+            android:textSize="15dp"/>
 
-            <ImageView
-                android:id="@+id/adapter_trip_card_chat"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="bottom|right"
-                card_view:srcCompat="@drawable/ic_notifications_black_24dp"
-                />
+        <ImageView
+            android:id="@+id/adapter_trip_card_chat"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="bottom|right"
+            card_view:srcCompat="@drawable/ic_notifications_black_24dp"
+            />
 
-            <ImageView
-                android:id="@+id/adapter_trip_card_editdetails"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginBottom="30dp"
-                card_view:srcCompat="@drawable/ic_sync_black_24dp"
-                />
+        <ImageView
+            android:id="@+id/adapter_trip_card_editdetails"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="30dp"
+            card_view:srcCompat="@drawable/ic_sync_black_24dp"
+            />
 
 
     </android.support.v7.widget.CardView>

@@ -41,6 +41,8 @@ public final class Constants {
     public static final String COMMUTER_IMAGE_URL_KEY = PACKAGE_NAME + ".COMMUTER_IMAGE_URL";
     public static final String COMMUTER_DISTANCE_FROM_USER_KEY = PACKAGE_NAME + ".COMMUTER_DISTANCE_FROM_USER";
     public static final String COMMUTER_TRIP_KEY = PACKAGE_NAME + ".COMMUTER_TRIP";
+    public static final String COMMUTER_ID_KEY = PACKAGE_NAME + ".COMMUTER_ID";
+
 
     public static final String[] TRIP_TRAVEL_MODES = {"Unknown", "Car", "Bike", "Cab", "Bus", "Auto", "Tram", "Walk", "Subway", "Train", "Flight", "Ferry"};
     public static final String TRIP_MODE_OF_TRAVEL_KEY = PACKAGE_NAME + ".MODE_OF_TRAVEL";
@@ -58,6 +60,7 @@ public final class Constants {
     public static final String RESULT_COMMUTER_AGE_KEY = "releaseYear";
     public static final String RESULT_COMMUTER_GENDER_KEY = "title";
     public static final String RESULT_COMMUTER_DISTANCE_FROM_USER_KEY = "rating";
+    public static final String COMMUTER_WITH_TRIP_TRIPLIST_KEY = "tripList";
 
 
     public static final boolean DEFAULT_TRIP_DETAILS_EDITABLE = false;
@@ -71,6 +74,7 @@ public final class Constants {
     public static final int TRIP_DETAILS_TYPE_R = 1;
     public static final int TRIP_DETAILS_TYPE_RW = 2;
     public static final int TRIP_DETAILS_TYPE_N = 3;
+    public static final String TRIP_LIST_KEY = PACKAGE_NAME + "TRIP_LIST_KEY";
 
     public static final int PLACE_PICKER_REQUEST_ORIGIN = 101;
     public static final int PLACE_PICKER_REQUEST_DESTINATION = 102;
@@ -78,6 +82,8 @@ public final class Constants {
 
     public static final String TRIP_DATABASE_KEY = (PACKAGE_NAME + ".trips").replace(".", "_");
     public static final String COMMUTER_DATABASE_KEY = (PACKAGE_NAME + ".commuters").replace(".", "_");
+    public static final String COMMUTER_WITH_TRIP_DATABASE_KEY = (PACKAGE_NAME + ".commuters.with.trips").replace(".", "_");
 
     public static final int ACCESS_FINE_LOCATION_REQUEST_CODE = 1;
+
 }

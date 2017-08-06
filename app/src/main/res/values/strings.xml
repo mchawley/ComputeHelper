@@ -31,6 +31,7 @@
     <string name="commuter_list_explore">Explore</string>
     <string name="commuter_list_invite">Invites</string>
     <string name="commuter_list_match">Matches</string>
+    <string name="label_destination">Going to</string>
 
 
 </resources>

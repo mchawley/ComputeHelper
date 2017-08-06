@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.bumptech.glide.Glide;
 import com.example.manishchawley.computehelper.R;
 import com.example.manishchawley.computehelper.app.AppController;
 import com.example.manishchawley.computehelper.model.Trip;
@@ -28,15 +26,14 @@ import java.util.List;
  * Created by manishchawley on 20/07/17.
  */
 
-public class TripCardAdapter extends RecyclerView.Adapter<TripCardAdapter.TripCardViewHolder> {
+public class TripRecyclerAdapter extends RecyclerView.Adapter<TripRecyclerAdapter.TripCardViewHolder> {
 
-    private final String TAG = TripCardAdapter.class.getName();
+    private final String TAG = TripRecyclerAdapter.class.getName();
 
     private Context context;
     private List<Trip> tripList;
-    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-    public TripCardAdapter(Context context, List<Trip> tripList) {
+    public TripRecyclerAdapter(Context context, List<Trip> tripList) {
         this.context = context;
         this.tripList = tripList;
     }
@@ -81,28 +78,6 @@ public class TripCardAdapter extends RecyclerView.Adapter<TripCardAdapter.TripCa
     public int getItemCount() {
         return tripList.size();
     }
-
-    @Override
-    public void onViewRecycled(TripCardViewHolder holder) {
-        super.onViewRecycled(holder);
-        holder.tripImage.setVisibility(View.VISIBLE);
-        Log.v(TAG, String.format("onViewRecycled: %s - %s, %s", holder.getAdapterPosition(), holder.destination.getText(), holder.tripImage.getHeight()));
-    }
-
-    @Override
-    public void onViewAttachedToWindow(TripCardViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-        holder.tripImage.setVisibility(View.VISIBLE);
-        Log.v(TAG, String.format("onViewAttachedToWindow: %s - %s, %s", holder.getAdapterPosition(), holder.destination.getText(), holder.tripImage.getHeight()));
-    }
-
-    @Override
-    public void onViewDetachedFromWindow(TripCardViewHolder holder) {
-        super.onViewDetachedFromWindow(holder);
-        holder.tripImage.setVisibility(View.INVISIBLE);
-        Log.v(TAG, String.format("onViewDetachedFromWindow: %s - %s, %s", holder.getAdapterPosition(), holder.destination.getText(), holder.tripImage.getHeight()));
-    }
-
 
     public class TripCardViewHolder extends RecyclerView.ViewHolder{
         public TextView destination, start, startDate, endDate, currentCount, params;

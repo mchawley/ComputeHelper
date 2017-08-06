@@ -4,14 +4,11 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.media.MediaBrowserCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +16,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.example.manishchawley.computehelper.R;
 import com.example.manishchawley.computehelper.app.AppController;
 import com.example.manishchawley.computehelper.model.Commuter;
@@ -28,29 +23,21 @@ import com.example.manishchawley.computehelper.model.Trip;
 import com.example.manishchawley.computehelper.util.Constants;
 import com.example.manishchawley.computehelper.util.Defaults;
 import com.example.manishchawley.computehelper.util.Dialogs;
+import com.example.manishchawley.computehelper.util.mLatLng;
 import com.example.manishchawley.computehelper.util.PhotoTask;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceDetectionApi;
-import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.android.gms.location.places.ui.PlacePicker;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import java.util.Calendar;
 
 public class TripDetailsActivity extends AppCompatActivity {
 
@@ -207,7 +194,7 @@ public class TripDetailsActivity extends AppCompatActivity {
 //                }
                 trip.setOriginPlace(placeLikelihoods.get(0).getPlace().getName().toString());
                 trip.setOriginPlaceID(placeLikelihoods.get(0).getPlace().getId());
-                trip.setOriginLocation(placeLikelihoods.get(0).getPlace().getLatLng());
+                trip.setOriginLocation(mLatLng.convert(placeLikelihoods.get(0).getPlace().getLatLng()));
                 setTripDetails();
                 hideProgressDialog();
                 placeLikelihoods.release();
@@ -382,14 +369,14 @@ public class TripDetailsActivity extends AppCompatActivity {
                 case Constants.PLACE_PICKER_REQUEST_ORIGIN:
                     place = PlaceAutocomplete.getPlace(this, data);
                     trip.setOriginPlace(place.getName().toString());
-                    trip.setOriginLocation(place.getLatLng());
+                    trip.setOriginLocation(mLatLng.convert(place.getLatLng()));
                     trip.setOriginPlaceID(place.getId());
                     tripOrigin.setText(trip.getOriginPlace());
                     break;
                 case Constants.PLACE_PICKER_REQUEST_DESTINATION:
                     place = PlaceAutocomplete.getPlace(this, data);
                     trip.setDestinationPlace(place.getName().toString());
-                    trip.setDestinationLocation(place.getLatLng());
+                    trip.setDestinationLocation(mLatLng.convert(place.getLatLng()));
                     trip.setDestinationPlaceID(place.getId());
                     tripDestination.setText(trip.getDestinationPlace());
                     destinationPlaceID = place.getId();

@@ -143,7 +143,7 @@ public class Commuter implements Parcelable{
 
     }
 
-    private class NullCommuterIdException extends Throwable {
+    public class NullCommuterIdException extends Throwable {
         @Override
         public String getMessage() {
             return "Commuter ID cannot be Null";
