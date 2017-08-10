@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.manishchawley.computehelper.render.TripDetailsActivity">
+    tools:context="com.example.manishchawley.commutehelper.render.TripDetailsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/activity_trip_details_appbarlayout"
@@ -20,34 +20,38 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="60dp"
-            app:expandedTitleMarginStart="40dp"
+            app:titleEnabled="false"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/activity_trip_details_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="pin">
+
+
+            </android.support.v7.widget.Toolbar>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/activity_trip_details_tripimage_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:scaleType="fitXY" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@id/activity_trip_details_destination"
-                    android:text="@string/label_destination"
-                    android:layout_gravity="top|left"
-                    android:textSize="20dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/label_destination"-->
+                    <!--android:layout_gravity="top|left"-->
+                    <!--android:textSize="20dp" />-->
 
                 <TextView
                     android:id="@+id/activity_trip_details_destination"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|left"
-                    android:paddingLeft="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:padding="4dp"
                     android:text="@string/trip_default_destination"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
@@ -58,6 +62,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/activity_trip_details_destination"
                     android:text="@string/trip_default_startdate" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+
+                <!--<com.example.manishchawley.commutehelper.util.PlaceImageView-->
+                    <!--android:id="@+id/activity_trip_details_tripimage_imageview"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="300dp"-->
+                    <!--android:scaleType="fitXY" />-->
+
+
 
                 <!--
                 <fragment
@@ -145,6 +162,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="@string/button_update"
+        android:textColor="@color/transparent_gray"
         android:background="@color/button_update"
         app:layout_anchor="@id/activity_trip_details_nestedscrollview"
         app:layout_anchorGravity="bottom|center"
@@ -157,6 +175,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:text="@string/button_cancel"
+        android:textColor="@color/transparent_gray"
         android:background="@color/button_cancel"
         app:layout_anchor="@id/activity_trip_details_nestedscrollview"
         app:layout_anchorGravity="bottom|center"

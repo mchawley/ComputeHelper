@@ -10,51 +10,54 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/trip_card_margin"
         android:elevation="@dimen/trip_card_elevation"
-        card_view:cardCornerRadius="1dp">
+        card_view:cardCornerRadius="10dp">
 
-        <ImageView
+        <com.example.manishchawley.commutehelper.util.PlaceImageView
             android:id="@+id/adapter_trip_card_tripimage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/trip_card_height"
             android:adjustViewBounds="true"
-            />
-
-        <TextView
-            android:id="@+id/adapter_trip_card_start"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="@string/trip_default_start"
-            android:layout_gravity="bottom|left"
-            android:textDirection="ltr"
-            android:textStyle="bold"
-            android:textSize="20dp" />
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/adapter_trip_card_destination"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
             android:text="@string/trip_default_destination"
             android:layout_gravity="top|left"
-            android:textColorHighlight="@color/button_login"
-            android:textColor="@color/button_login"
+            android:textColor="@color/cardview_default_text"
+            android:background="@drawable/rounded_corner"
+            android:padding="@dimen/cardview_default_padding"
+            android:layout_marginTop="@dimen/cardview_default_margin"
+            android:layout_marginLeft="@dimen/cardview_default_margin"
+            android:layout_marginRight="@dimen/cardview_default_margin"
             android:textStyle="bold"
-            android:textSize="25dp" />
+            android:textSize="22dp" />
 
         <TextView
             android:id="@+id/adapter_trip_card_startdate"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
             android:text="@string/trip_default_startdate"
+            android:background="@drawable/rounded_corner"
+            android:padding="@dimen/cardview_default_padding"
             android:layout_gravity="top|left"
-            android:layout_marginTop="40dp"
+            android:textColor="@color/cardview_default_text"
+            android:layout_marginLeft="@dimen/cardview_default_margin"
+            android:layout_marginRight="@dimen/cardview_default_margin"
+            android:layout_marginTop="45dp"
             android:textSize="15dp"/>
 
         <ImageView
             android:id="@+id/adapter_trip_card_chat"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginBottom="@dimen/cardview_default_margin"
+            android:layout_marginRight="@dimen/cardview_default_margin"
             android:layout_gravity="bottom|right"
             card_view:srcCompat="@drawable/ic_notifications_black_24dp"
+            android:background="@drawable/rounded_corner"
+            android:elevation="@dimen/cardview_default_elevation"
             />
 
         <ImageView
@@ -63,8 +66,35 @@
             android:layout_height="24dp"
             android:layout_gravity="bottom|right"
             android:layout_marginBottom="30dp"
+            android:layout_marginRight="@dimen/cardview_default_margin"
             card_view:srcCompat="@drawable/ic_sync_black_24dp"
+            android:elevation="@dimen/cardview_default_elevation"
             />
+
+        <ImageView
+            android:id="@+id/adapter_trip_card_ownerimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|left"
+            card_view:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
+            android:layout_marginLeft="@dimen/cardview_default_margin"
+            android:layout_marginBottom="@dimen/cardview_default_margin"/>
+
+        <TextView
+            android:id="@+id/adapter_trip_card_start"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom|left"
+            android:textColor="@color/cardview_default_text"
+            android:text="@string/trip_default_start"
+            android:background="@drawable/rounded_corner"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="@dimen/cardview_default_margin"
+            android:padding="@dimen/cardview_default_padding"
+            android:layout_marginRight="@dimen/cardview_default_margin"
+            android:textDirection="ltr"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
 
     </android.support.v7.widget.CardView>

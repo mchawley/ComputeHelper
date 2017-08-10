@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.manishchawley.computehelper.component.UserDisplayFragment">
+    tools:context="com.example.manishchawley.commutehelper.component.UserDisplayFragment">
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/fragment_user_display_network_image_view"

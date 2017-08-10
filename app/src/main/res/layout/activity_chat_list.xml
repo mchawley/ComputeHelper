@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.manishchawley.computehelper.render.ChatListActivity">
+    tools:context="com.example.manishchawley.commutehelper.render.ChatListActivity">
 
 </android.support.constraint.ConstraintLayout>

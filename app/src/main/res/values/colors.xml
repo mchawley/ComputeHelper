@@ -9,8 +9,13 @@
     <color name="list_row_end_color">#ffffff</color>
     <color name="list_row_hover_start_color">#ebeef0</color>
     <color name="list_row_hover_end_color">#ebeef0</color>
-    <color name="button_update">#009900</color>
-    <color name="button_cancel">#990000</color>
+    <color name="button_update">#80009900</color>
+    <color name="button_cancel">#80990000</color>
     <color name="button_login">#0000AA</color>
+    <color name="gold">#ffd700</color>
+    <color name="transparentgold">#80ffd700</color>
+    <color name="transparent_gray">#80F5F5F5</color>
+    <color name="rounded_corner_border">#f5f5f5</color>
+    <color name="cardview_default_text">#999</color>
 
 </resources>

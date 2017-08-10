@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.manishchawley.computehelper">
+    package="com.example.manishchawley.commutehelper">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".app.AppController"
+        android:name="com.example.manishchawley.commutehelper.app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,14 +27,14 @@
             android:value="@string/facebook_app_id" />
 
         <!-- Main Activity -->
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.manishchawley.commutehelper.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".render.FacebookLoginActivity" />
+        <activity android:name="com.example.manishchawley.commutehelper.render.FacebookLoginActivity" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -43,22 +43,22 @@
 
         <!-- Current location service -->
         <service
-            android:name=".provider.CurrentLocationService"
+            android:name="com.example.manishchawley.commutehelper.provider.CurrentLocationService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".provider.UserConnectService"
+            android:name="com.example.manishchawley.commutehelper.provider.UserConnectService"
             android:exported="false" />
 
         <activity
-            android:name=".render.UserDisplayActivity"
+            android:name="com.example.manishchawley.commutehelper.render.UserDisplayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".render.UserLoginActivity" />
-        <activity android:name=".render.TripListActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".render.TripDetailsActivity" android:screenOrientation="portrait" />
-        <activity android:name=".render.CommuterListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".render.ChatListActivity" />
-        <activity android:name=".render.CommuterDetailsActivity"></activity>
+        <activity android:name="com.example.manishchawley.commutehelper.render.UserLoginActivity" />
+        <activity android:name="com.example.manishchawley.commutehelper.render.TripListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.manishchawley.commutehelper.render.TripDetailsActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="com.example.manishchawley.commutehelper.render.CommuterListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="com.example.manishchawley.commutehelper.render.ChatListActivity" />
+        <activity android:name="com.example.manishchawley.commutehelper.render.CommuterDetailsActivity"></activity>
     </application>
 
 </manifest>
